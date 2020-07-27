@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\IT\\Projects\\AnimalShelter\\AnimalShelter.csproj": {}
+    "D:\\IT\\AnimalShelter\\AnimalShelter.csproj": {}
   },
   "projects": {
-    "D:\\IT\\Projects\\AnimalShelter\\AnimalShelter.csproj": {
+    "D:\\IT\\AnimalShelter\\AnimalShelter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\IT\\Projects\\AnimalShelter\\AnimalShelter.csproj",
+        "projectUniqueName": "D:\\IT\\AnimalShelter\\AnimalShelter.csproj",
         "projectName": "AnimalShelter",
-        "projectPath": "D:\\IT\\Projects\\AnimalShelter\\AnimalShelter.csproj",
+        "projectPath": "D:\\IT\\AnimalShelter\\AnimalShelter.csproj",
         "packagesPath": "C:\\Users\\АлександърДжеков\\.nuget\\packages\\",
-        "outputPath": "D:\\IT\\Projects\\AnimalShelter\\obj\\",
+        "outputPath": "D:\\IT\\AnimalShelter\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,40 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.21, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
