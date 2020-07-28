@@ -37,7 +37,17 @@
                 @Html.DisplayFor(modelItem => item.Breed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cleansed)
+                    @switch (item.Cleansed)
+                    {
+                        case 0:
+                            <p>No</p>
+                            break;
+                                    
+                        default:
+                            <p>Yes</p>
+                            break;
+                     }
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Centre.Name)

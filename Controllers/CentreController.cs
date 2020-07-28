@@ -11,6 +11,9 @@ namespace AnimalShelter.Controllers
 {
     public class CentreController : Controller
     {
+        private const string AdoptionCentreString = "Adoption Centre";
+        private const string CleansingCentreString = "Cleansing Centre";
+
         private readonly animal_shelterContext _context;
 
         public CentreController(animal_shelterContext context)
@@ -45,7 +48,8 @@ namespace AnimalShelter.Controllers
         // GET: Centres/Create
         public IActionResult Create()
         {
-            return View();
+            ViewData["Type"] = new List<SelectListItem> { new SelectListItem { Text = AdoptionCentreString, Value = AdoptionCentreString }, new SelectListItem { Text = CleansingCentreString, Value = CleansingCentreString } };
+                return View();
         }
 
         // POST: Centres/Create
@@ -61,6 +65,7 @@ namespace AnimalShelter.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Type"] = new List<SelectListItem> { new SelectListItem { Text = AdoptionCentreString, Value = AdoptionCentreString }, new SelectListItem { Text = CleansingCentreString, Value = CleansingCentreString } };
             return View(centre);
         }
 

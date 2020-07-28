@@ -1,8 +1,6 @@
 ﻿@model AnimalShelter.Models.Cat
 
-@{
-    ViewData["Title"] = "Delete";
-}
+@{ ViewData["Title"] = "Delete"; }
 
 <h1>Delete</h1>
 
@@ -11,38 +9,47 @@
     <h4>Cat</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Breed)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Breed)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IntelligenceCoefficient)
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.IntelligenceCoefficient)*@
+            Intelligence Coefficient
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IntelligenceCoefficient)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cleansed)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cleansed)
+        <dd class="col-sm-10">
+            @switch (Model.Cleansed)
+            {
+                case 0:
+                    <p>No</p>
+                    break;
+                default:
+                    <p>Yes</p>
+                    break;
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Centre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Centre.Name)
-        </dd class>
+        </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

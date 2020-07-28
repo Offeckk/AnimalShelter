@@ -11,6 +11,8 @@ namespace AnimalShelter.Controllers
 {
     public class CatController : Controller
     {
+        private const string AdoptionCentreString = "Adoption Centre";
+
         private readonly animal_shelterContext _context;
 
         public CatController(animal_shelterContext context)
@@ -47,7 +49,9 @@ namespace AnimalShelter.Controllers
         // GET: Cat/Create
         public IActionResult Create()
         {
-            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name");
+
+            ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
+            ViewData["CentreId"] = new SelectList(_context.Centres.Where(c => c.Type == AdoptionCentreString), "Id", "Name");
             return View();
         }
 
@@ -64,7 +68,8 @@ namespace AnimalShelter.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name", cat.CentreId);
+            ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
+            ViewData["CentreId"] = new SelectList(_context.Centres.Where(c => c.Type == AdoptionCentreString), "Id", "Name", cat.CentreId);
             return View(cat);
         }
 
@@ -81,7 +86,8 @@ namespace AnimalShelter.Controllers
             {
                 return NotFound();
             }
-            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name", cat.CentreId);
+            ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
+            ViewData["CentreId"] = new SelectList(_context.Centres.Where(c => c.Type == AdoptionCentreString), "Id", "Name", cat.CentreId);
             return View(cat);
         }
 
@@ -117,7 +123,7 @@ namespace AnimalShelter.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name", cat.CentreId);
+            ViewData["CentreId"] = new SelectList(_context.Centres.Where(c => c.Type == AdoptionCentreString), "Id", "Name", cat.CentreId);
             return View(cat);
         }
 
