@@ -13,7 +13,7 @@ namespace AnimalShelter.Controllers
     {
         private const string AdoptionCentreString = "Adoption Centre";
 
-        private readonly animal_shelterContext _context;
+        private readonly animal_shelterContext  _context;
 
         public CatController(animal_shelterContext context)
         {
@@ -47,7 +47,7 @@ namespace AnimalShelter.Controllers
         }
 
         // GET: Cat/Create
-        public IActionResult Create()
+        public IActionResult Regisgter()
         {
 
             ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
@@ -60,7 +60,7 @@ namespace AnimalShelter.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Breed,IntelligenceCoefficient,Cleansed,CentreId")] Cat cat)
+        public async Task<IActionResult> Register([Bind("Id,Name,Breed,IntelligenceCoefficient,Cleansed,CentreId")] Cat cat)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +128,7 @@ namespace AnimalShelter.Controllers
         }
 
         // GET: Cat/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Adopt(int? id)
         {
             if (id == null)
             {
@@ -147,9 +147,9 @@ namespace AnimalShelter.Controllers
         }
 
         // POST: Cat/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Adopt")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> AdoptConfirmed(int id)
         {
             var cat = await _context.Cats.FindAsync(id);
             _context.Cats.Remove(cat);

@@ -1,0 +1,58 @@
+﻿@model AnimalShelter.Models.Cat
+
+@{ ViewData["Title"] = "Adopt"; }
+
+<h1>Adopt</h1>
+
+<h3>Do you agree to adopt this animal?</h3>
+<div>
+    <h4>Cat</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Breed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Breed)
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.IntelligenceCoefficient)*@
+            Intelligence Coefficient
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IntelligenceCoefficient)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cleansed)
+        </dt>
+        <dd class="col-sm-10">
+            @switch (Model.Cleansed)
+            {
+                case 0:
+                    <p>No</p>
+                    break;
+                default:
+                    <p>Yes</p>
+                    break;
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Centre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Centre.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="Adopt">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Adopt" class="btn btn-warning" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

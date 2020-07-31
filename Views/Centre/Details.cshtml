@@ -10,18 +10,33 @@
     <h4>Centre</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Type)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Type)
         </dd>
+        <dt class="col-sm-2">
+            Cats
+        </dt>        
+        @foreach (var item in @Model.Cats)
+        {
+            <dd>@item.Name</dd>
+        }
+        <dt class="col-sm-2">
+            Dogs
+        </dt>        
+        @foreach (var item in @Model.Dogs)
+        {
+            <dd>@item.Name</dd>
+        }
+
     </dl>
 </div>
 <div>
