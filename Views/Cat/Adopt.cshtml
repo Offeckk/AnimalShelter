@@ -1,6 +1,16 @@
 ﻿@model AnimalShelter.Models.Cat
 
-@{ ViewData["Title"] = "Adopt"; }
+@{ ViewData["Title"] = "Adopt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = TempData["Error"] ?? string.Empty;
+}
+
+
+<script type="text/javascript">
+var message = '@message';
+if(message)
+    alert(message);
+</script>
 
 <h1>Adopt</h1>
 

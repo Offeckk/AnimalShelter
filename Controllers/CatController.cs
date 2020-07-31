@@ -47,7 +47,7 @@ namespace AnimalShelter.Controllers
         }
 
         // GET: Cat/Create
-        public IActionResult Regisgter()
+        public IActionResult Register()
         {
 
             ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
@@ -152,8 +152,19 @@ namespace AnimalShelter.Controllers
         public async Task<IActionResult> AdoptConfirmed(int id)
         {
             var cat = await _context.Cats.FindAsync(id);
-            _context.Cats.Remove(cat);
-            await _context.SaveChangesAsync();
+            var centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
+
+            if (centre.Type == AdoptionCentreString && cat.Cleansed == 1)
+            {
+                _context.Cats.Remove(cat);
+                await _context.SaveChangesAsync();
+                TempData["Error"] = null;
+            }
+            else
+            {
+                TempData["Error"] = "Animal must be cleansed and it must be in adoption center!";
+                return View(cat);
+            }
             return RedirectToAction(nameof(Index));
         }
 
