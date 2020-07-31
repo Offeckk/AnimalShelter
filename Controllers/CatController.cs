@@ -46,7 +46,9 @@ namespace AnimalShelter.Controllers
             return View(cat);
         }
 
+
         // GET: Cat/Register
+
         public IActionResult Register()
         {
 
@@ -148,6 +150,7 @@ namespace AnimalShelter.Controllers
         public async Task<IActionResult> AdoptConfirmed(int id)
         {
             var cat = await _context.Cats.FindAsync(id);
+
             cat.Centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
 
             if (cat.Cleansed == 1 && cat.Centre.Type == AdoptionCentreString)
@@ -160,6 +163,20 @@ namespace AnimalShelter.Controllers
                 return View(cat);
             }
 
+
+            var centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
+
+            if (centre.Type == AdoptionCentreString && cat.Cleansed == 1)
+            {
+                _context.Cats.Remove(cat);
+                await _context.SaveChangesAsync();
+                TempData["Error"] = null;
+            }
+            else
+            {
+                TempData["Error"] = "Animal must be cleansed and it must be in adoption center!";
+                return View(cat);
+            }
             return RedirectToAction(nameof(Index));
         }
 

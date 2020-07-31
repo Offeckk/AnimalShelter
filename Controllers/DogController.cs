@@ -163,6 +163,19 @@ namespace AnimalShelter.Controllers
                 return View(dog);
             }
                 
+            var centre = _context.Centres.FirstOrDefault(d => d.Id == dog.CentreId);
+
+            if (centre.Type == AdoptionCentreString && dog.Cleansed == 1)
+            {
+                _context.Dogs.Remove(dog);
+                await _context.SaveChangesAsync();
+                TempData["Error"] = null;
+            }
+            else
+            {
+                TempData["Error"] = "Animal must be cleansed and it must be in adoption center!";
+                return View(dog);
+            }
             return RedirectToAction(nameof(Index));
         }
 
