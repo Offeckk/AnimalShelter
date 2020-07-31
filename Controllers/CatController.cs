@@ -153,17 +153,6 @@ namespace AnimalShelter.Controllers
 
             cat.Centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
 
-            if (cat.Cleansed == 1 && cat.Centre.Type == AdoptionCentreString)
-            {
-                _context.Cats.Remove(cat);
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                return View(cat);
-            }
-
-
             var centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
 
             if (centre.Type == AdoptionCentreString && cat.Cleansed == 1)

@@ -153,16 +153,6 @@ namespace AnimalShelter.Controllers
             var dog = await _context.Dogs.FindAsync(id);
             dog.Centre = _context.Centres.FirstOrDefault(c => c.Id == dog.CentreId);
 
-            if (dog.Cleansed == 1 && dog.Centre.Type == AdoptionCentreString)
-            {
-                 _context.Dogs.Remove(dog);
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                return View(dog);
-            }
-                
             var centre = _context.Centres.FirstOrDefault(d => d.Id == dog.CentreId);
 
             if (centre.Type == AdoptionCentreString && dog.Cleansed == 1)
