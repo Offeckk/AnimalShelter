@@ -1,0 +1,82 @@
+﻿@model AnimalShelter.Models.Centre
+@{
+    ViewData["Title"] = "ChangeCentre";
+}
+
+<h1>ChangeCentre</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Breed
+            </th>
+            <th>
+                Cleansed
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Dogs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Breed)
+                </td>
+                <td>
+                    @switch (item.Cleansed)
+                    {
+                        case 0:
+                            <p>No</p>
+                            break;
+
+                        default:
+                            <p>Yes</p>
+                            break;
+                    }
+
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Adopt" asp-route-id="@item.Id">Adopt</a>
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model.Cats)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Breed)
+                </td>
+                <td>
+                    @switch (item.Cleansed)
+                    {
+                        case 0:
+                            <p>No</p>
+                            break;
+
+                        default:
+                            <p>Yes</p>
+                            break;
+                    }
+
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Adopt" asp-route-id="@item.Id">Adopt</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

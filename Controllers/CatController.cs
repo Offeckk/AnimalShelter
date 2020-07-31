@@ -46,8 +46,8 @@ namespace AnimalShelter.Controllers
             return View(cat);
         }
 
-        // GET: Cat/Create
-        public IActionResult Regisgter()
+        // GET: Cat/Register
+        public IActionResult Register()
         {
 
             ViewData["Cleansed"] = new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } };
@@ -55,9 +55,7 @@ namespace AnimalShelter.Controllers
             return View();
         }
 
-        // POST: Cat/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Cat/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("Id,Name,Breed,IntelligenceCoefficient,Cleansed,CentreId")] Cat cat)
@@ -92,8 +90,6 @@ namespace AnimalShelter.Controllers
         }
 
         // POST: Cat/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Breed,IntelligenceCoefficient,Cleansed,CentreId")] Cat cat)
@@ -127,7 +123,7 @@ namespace AnimalShelter.Controllers
             return View(cat);
         }
 
-        // GET: Cat/Delete/5
+        // GET: Cat/Adopt/5
         public async Task<IActionResult> Adopt(int? id)
         {
             if (id == null)
@@ -146,14 +142,24 @@ namespace AnimalShelter.Controllers
             return View(cat);
         }
 
-        // POST: Cat/Delete/5
+        // POST: Cat/Adopt/5
         [HttpPost, ActionName("Adopt")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AdoptConfirmed(int id)
         {
             var cat = await _context.Cats.FindAsync(id);
-            _context.Cats.Remove(cat);
-            await _context.SaveChangesAsync();
+            cat.Centre = _context.Centres.FirstOrDefault(c => c.Id == cat.CentreId);
+
+            if (cat.Cleansed == 1 && cat.Centre.Type == AdoptionCentreString)
+            {
+                _context.Cats.Remove(cat);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                return View(cat);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

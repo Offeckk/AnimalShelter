@@ -151,8 +151,18 @@ namespace AnimalShelter.Controllers
         public async Task<IActionResult> AdoptConfirmed(int id)
         {
             var dog = await _context.Dogs.FindAsync(id);
-            _context.Dogs.Remove(dog);
-            await _context.SaveChangesAsync();
+            dog.Centre = _context.Centres.FirstOrDefault(c => c.Id == dog.CentreId);
+
+            if (dog.Cleansed == 1 && dog.Centre.Type == AdoptionCentreString)
+            {
+                 _context.Dogs.Remove(dog);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                return View(dog);
+            }
+                
             return RedirectToAction(nameof(Index));
         }
 

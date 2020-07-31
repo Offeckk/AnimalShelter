@@ -42,7 +42,7 @@ namespace AnimalShelter.Controllers
                 return NotFound();
             }
 
-            
+
             return View(centre);
         }
 
@@ -50,7 +50,7 @@ namespace AnimalShelter.Controllers
         public IActionResult Create()
         {
             ViewData["Type"] = new List<SelectListItem> { new SelectListItem { Text = AdoptionCentreString, Value = AdoptionCentreString }, new SelectListItem { Text = CleansingCentreString, Value = CleansingCentreString } };
-                return View();
+            return View();
         }
 
         // POST: Centres/Create
@@ -148,6 +148,39 @@ namespace AnimalShelter.Controllers
             _context.Centres.Remove(centre);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> ChangeCentre(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var centre = await _context.Centres
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            centre.Cats = _context.Cats.Where(c => c.CentreId == centre.Id).ToArray();
+
+            centre.Dogs = _context.Dogs.Where(c => c.CentreId == centre.Id).ToArray();
+        
+            if (centre == null)
+            {
+                return NotFound();
+            }
+
+            return View(centre);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeCentre(int? currentId, int? newId)
+        {
+            if (currentId == null || newId == null)
+            {
+                return NotFound();
+            }
+
+            return View();
         }
 
         private bool CentreExists(int id)

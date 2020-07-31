@@ -177,13 +177,9 @@ D:\IT\AnimalShelter\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 D:\IT\AnimalShelter\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\IT\AnimalShelter\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\AnimalShelter.MvcApplicationPartsAssemblyInfo.cache
-D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Create.cshtml.g.cs
-D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Delete.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Details.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Edit.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Index.cshtml.g.cs
-D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Create.cshtml.g.cs
-D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Delete.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Details.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Edit.cshtml.g.cs
 D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Index.cshtml.g.cs
@@ -275,3 +271,8 @@ C:\Users\User\Documents\MusalaSoft Project\AnimalShelter\obj\Debug\netcoreapp3.1
 C:\Users\User\Documents\MusalaSoft Project\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Adopt.cshtml.g.cs
 C:\Users\User\Documents\MusalaSoft Project\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Register.cshtml.g.cs
 C:\Users\User\Documents\MusalaSoft Project\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Adopt.cshtml.g.cs
+D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Adopt.cshtml.g.cs
+D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Cat\Register.cshtml.g.cs
+D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Adopt.cshtml.g.cs
+D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Dog\Register.cshtml.g.cs
+D:\IT\AnimalShelter\obj\Debug\netcoreapp3.1\Razor\Views\Centre\ChangeCentre.cshtml.g.cs
