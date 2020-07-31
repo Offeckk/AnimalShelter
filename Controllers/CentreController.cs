@@ -150,7 +150,7 @@ namespace AnimalShelter.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> ChangeCentre(int? id)
+        public async Task<IActionResult> ShowAnimalsInCentre(int? id)
         {
             if (id == null)
             {
@@ -172,15 +172,43 @@ namespace AnimalShelter.Controllers
             return View(centre);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ChangeCentre(int? currentId, int? newId)
+        public async Task<IActionResult> ChangeCentreForDog(int? id)
         {
-            if (currentId == null || newId == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
+            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name");
+
             return View();
+        }
+
+        public async Task<IActionResult> ChangeCentreForCat(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["CentreId"] = new SelectList(_context.Centres, "Id", "Name");
+
+            return View();
+        }
+
+        [HttpPost, ActionName("ChangeCentreForCats")]
+        public async Task<IActionResult> ChangeCatsCentre(int? id)
+        {
+            
+
+            return View("Index");
+        }
+
+
+        [HttpPost, ActionName("ChangeCentreForDogs")]
+        public async Task<IActionResult> ChangeDogCentre(int? id)
+        {
+            return View("Index");
         }
 
         private bool CentreExists(int id)

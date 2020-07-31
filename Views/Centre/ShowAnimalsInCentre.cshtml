@@ -1,6 +1,6 @@
 ﻿@model AnimalShelter.Models.Centre
 @{
-    ViewData["Title"] = "ChangeCentre";
+    ViewData["Title"] = "ShowAnimalsInCentre";
 }
 
 <h1>ChangeCentre</h1>
@@ -43,9 +43,7 @@
 
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Adopt" asp-route-id="@item.Id">Adopt</a>
+                    <a asp-action="ChangeCentreForDog" asp-route-id="@item.Id">Change Centre</a>
                 </td>
             </tr>
         }
@@ -72,9 +70,7 @@
 
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Adopt" asp-route-id="@item.Id">Adopt</a>
+                    <a asp-action="ChangeCentreForCat" asp-route-id="@item.Id">Change Centre</a>
                 </td>
             </tr>
         }
